@@ -11,3 +11,5 @@ Never again.
 Im back to where I started, I added to the analysis beyond what was recommended two columns that I thought were interesting, the most common item and the least common item.
 
 I don't know what did it, but it was certainly difficult to get the first series into a dataframe.
+
+Well figuring out how the sort index worked on the datafrane took a bit of time, but got it working on ascending = true, I also had the bins wrongly alligned.
