@@ -1,5 +1,21 @@
-Observation 1
+Observation 1:
+
+That calling certain values, particularly the avg purchase total of either "age group" or purchase count in the "top spenders", "most popular items", & "most profitable items" requires either groupby or count of columns that aren't intuitive. 
+Like, conceptually, when working with a "most profitable items" for example why would I have to groupby "Gender" to make it work. I think I get the reasoning, when defining the DataFrame variable, say that it is looking at "Screen_names" but that has already been called, its a shorthand way of calling "SN" again because they are related. 
+ie, each "SN" has a gender value so it works.
 
 Observation 2
 
+That  SN to purchases would be a one to many relationship was known to me, one person/SN can have multiple purchases, easy. 
+So those need to be removed to count the total player base, there may be 778 purchases but there are only 567 players. 
+That made sense for anything demographic wise, the age cohorts and their summary tables, the gender breakdown and percentable of total summary tables and the first total players. 
+What was surprising, and almost threw my analysis off was that when looking at the last "Item" tables we have to go back to the inital dataframe, 778.
+As I say I type it, it makes sense, to get to the total players we dropped duplicate "SN" so to count the purchase out of say "Iral74" you are never going to get more than 1 on the purchase count across the entire table, so any analysis of total purchases, is going to be off,
+they have to be added back in.
+
 Observation 3
+You can't add the .astype(float).map("$(:,. blahblah to the original dataframe, you have to add it to the output files on the individual money columns. 
+And it doesn't seem like you can add it to the format of the summary table for the price related numbers, I was hoping that I could declare price as $ right after calling the dtypes in the beginning. 
+I found a way to make it work by adding "$" + str(whatever_price) but it then turns it into a string obviously, so the above code of average_price.round(2) no longer works and it makes the summary table look worse, for while it might have a dollar symbol it now has ten decimal places afterwards.
+I got it to work by adding it at the end of the purchase_analysis_summary_df, I didn't realize that you call it when you are assigning the variables their titles for the summary table, you call it in the pasdf["average price"]
+Still could only get it to work half the time for the percentage on the age tables, it wound up calling everyhting in the table, and so i have decided to abandon the enterprise rather than have it half and half, the column names tell one what the format of a price or percentage is, adding the symbols themselves is just window dressing.
